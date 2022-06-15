@@ -39,8 +39,10 @@ spec:
             defaultContainer 'shell'
         }
     }
-   
-    stages {
+   environment {
+  DOCKERHUB_CREDENTIALS = credentials('token')
+  }
+      stages {
         stage('docker build') {
             steps {
                 sh 'docker build -t harishoo7/alert .'
@@ -48,7 +50,7 @@ spec:
         }
         stage('docker login') {
             steps {
-                 sh 'docker login -u harishoo7 -p Deva143i7'
+                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin '
                 }
              }
          stage('docker push') {
