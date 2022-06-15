@@ -40,7 +40,7 @@ spec:
         }
     }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('token')
+               DOCKERHUB_CREDENTIALS = credentials('token')
     }
     stages {
         stage('docker build') {
