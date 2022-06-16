@@ -5,7 +5,7 @@ pipeline {
             // Or, to avoid YAML:
             // containerTemplate {
             //     name 'shell'
-            //     image 'python'
+            //     image 'ubuntu'
             //     command 'sleep'
             //     args 'infinity'
             // }
@@ -39,10 +39,10 @@ spec:
             defaultContainer 'shell'
         }
     }
-   environment {
-  DOCKERHUB_CREDENTIALS = credentials('token')
-  }
-      stages {
+    environment {
+    DOCKERHUB_CREDENTIALS = credentials('token')
+    }
+    stages {
         stage('docker build') {
             steps {
                 sh 'docker build -t harishoo7/alert .'
@@ -50,7 +50,7 @@ spec:
         }
         stage('docker login') {
             steps {
-                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin '
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin ' 
                 }
              }
          stage('docker push') {
@@ -58,7 +58,7 @@ spec:
                      sh 'docker push harishoo7/alert'
                   }
             }
-             stage("install helm"){
+            stage("install helm"){
 
            steps {
 
@@ -78,14 +78,12 @@ spec:
 
             steps {
 
-                sh 'helm install alert .'
+                sh 'helm upgrade --install alert alert1'
 
         }
 
     }
 
- 
+ }
 
-}
-           
 }
