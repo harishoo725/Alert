@@ -78,7 +78,7 @@ spec:
 
             steps {
 
-                sh 'helm upgrade --install alert'
+                sh 'helm install alert .'
 
         }
 
