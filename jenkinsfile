@@ -77,7 +77,7 @@ spec:
        stage('helm') {
                  steps {
                           sh 'helm version'
-                          sh 'helm upgrade --install alert1 alert'
+                          sh 'helm upgrade --install alert22 alert'
         }
      }
 
