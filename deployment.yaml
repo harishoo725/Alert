@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: alert
+  name: alert1
 spec:
   selector:
     matchLabels:
-      app: alert
+      app: alert1
   template:
     metadata:
       labels:
-        app: alert
+        app: alert1
     spec:
       containers:
-      - name: alert
+      - name: alert1
         image: harishoo7/alert
         resources:
           limits:
