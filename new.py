@@ -1,14 +1,14 @@
 import sendgrid
 from elasticsearch import Elasticsearch
 import time
-mail = sendgrid.SendGridAPIClient('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')
+mail = sendgrid.SendGridAPIClient('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')
 
 esconnector = Elasticsearch(
     "http://10.101.60.86:32315/")
     
 
 message = sendgrid.Mail(
-                from_email='harinath.kavuri@perigorddata.com',
+                from_email='harinath.kavuri@gmail.com',
                 to_emails='anandsadhu@perigorddata.com',
                 subject='PM Elastic DB Down',
                 html_content='<strong>Elastic DB Down</strong>')
@@ -24,4 +24,4 @@ while True:
     except:
         print("Error an expectional")
         response = mail.send(message)
-    break
+        break
